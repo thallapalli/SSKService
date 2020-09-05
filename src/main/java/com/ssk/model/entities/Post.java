@@ -15,7 +15,7 @@ public class Post {
 		super();
 		Id = id;
 		this.description = description;
-		
+
 	}
 
 	public Post() {
@@ -37,7 +37,5 @@ public class Post {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-
-	
 
 }
