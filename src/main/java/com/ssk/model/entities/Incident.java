@@ -13,7 +13,6 @@ import com.ssk.model.audit.Auditable;
 @Entity
 @Table(name = "incident")
 
-
 public class Incident extends Auditable<String> {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,18 +34,20 @@ public class Incident extends Auditable<String> {
 				+ ", lastModifiedDate=" + lastModifiedDate + ", getClass()=" + getClass() + ", hashCode()=" + hashCode()
 				+ ", toString()=" + super.toString() + "]";
 	}
-	
+
 	@Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Incident )) return false;
-        return ticketNumber != null && ticketNumber.equals(((Incident) o).getTicketNumber());
-    }
- 
-    @Override
-    public int hashCode() {
-        return 31;
-    }
+	public boolean equals(Object o) {
+		if (this == o)
+			return true;
+		if (!(o instanceof Incident))
+			return false;
+		return ticketNumber != null && ticketNumber.equals(((Incident) o).getTicketNumber());
+	}
+
+	@Override
+	public int hashCode() {
+		return 31;
+	}
 
 	public Long getTicketNumber() {
 		return ticketNumber;
@@ -55,8 +56,6 @@ public class Incident extends Auditable<String> {
 	public void setTicketNumber(Long ticketNumber) {
 		this.ticketNumber = ticketNumber;
 	}
-
-	
 
 	public String getContact() {
 		return contact;
@@ -105,7 +104,5 @@ public class Incident extends Auditable<String> {
 	public void setUser(User user) {
 		this.user = user;
 	}
-
-	
 
 }

@@ -6,6 +6,5 @@ public class ResourceNotFoundException extends Exception {
 		// TODO Auto-generated constructor stub
 		super(mesg);
 	}
-	
 
 }

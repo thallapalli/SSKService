@@ -34,10 +34,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests().antMatchers("/resources/**", "/registration").permitAll()
 				// .anyRequest().authenticated() // enable security
 				.anyRequest().permitAll()// disable security
-				.and().formLogin().loginPage("/login").permitAll().and().logout().permitAll()
-				.and().headers().frameOptions().disable()
-				.and().csrf().disable();
-				
+				.and().formLogin().loginPage("/login").permitAll().and().logout().permitAll().and().headers()
+				.frameOptions().disable().and().csrf().disable();
+
 	}
 
 	@Bean

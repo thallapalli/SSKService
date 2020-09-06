@@ -17,5 +17,4 @@ public class SSKServiceApplication extends SpringBootServletInitializer {
 		SpringApplication.run(SSKServiceApplication.class, args);
 	}
 
-
 }
