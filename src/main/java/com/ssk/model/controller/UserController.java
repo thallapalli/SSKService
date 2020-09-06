@@ -7,60 +7,58 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ssk.model.entities.Post;
-import com.ssk.model.service.PostService;
+import com.ssk.model.entities.User;
+import com.ssk.model.service.UserServiceImpl;
 
 @RestController
-@RequestMapping("/post")
-public class PostController {
+@RequestMapping("/user")
+public class UserController {
 	@Autowired
-	PostService postService;
+	UserServiceImpl userServiceImpl;
 
-	@GetMapping(value = "/hello")
-	public String hello() {
-		return "Hello ,welcome to SSKS!!!";
-
-	}
 	@GetMapping(value = "/count")
 	public Long count() {
-		return postService.count();
+		return userServiceImpl.count();
 	}
+
 	@GetMapping(value = "/{id}/exists")
 	public boolean existsById(@PathVariable Long id) {
-		return postService.existsById(id);
+		return userServiceImpl.existsById(id);
 	}
+
 	@DeleteMapping(value = "/")
 	public void deleteAll() {
-		postService.deleteAll();
+		userServiceImpl.deleteAll();
 	}
+
 	@DeleteMapping(value = "/{id}")
 	public void deleteById(@PathVariable Long id) throws Exception {
-		postService.deleteById(id);
+		userServiceImpl.deleteById(id);
 	}
+
 	@GetMapping(value = "/all")
-	public Iterable<Post> findAll() {
-		return postService.findAll();
+	public Iterable<User> findAll() {
+		return userServiceImpl.findAll();
 	}
+
 	@GetMapping(value = "/{id}")
-	public Optional<Post> findById(@PathVariable Long id) {
-		return postService.findById(id);
+	public Optional<User> findById(@PathVariable Long id) {
+		return userServiceImpl.findById(id);
 	}
+
 	@PostMapping(value = "/create")
-	public Post save(@RequestBody Post post) {
-		return postService.save(post);
+	public void save(@RequestBody User user) {
+		userServiceImpl.save(user);
 	}
+
 	@PostMapping(value = "/saveall")
-	public Iterable<Post> saveAll(@RequestBody Iterable<Post> posts) {
-		return postService.saveAll(posts);
+	public Iterable<User> saveAll(@RequestBody Iterable<User> users) {
+		return userServiceImpl.saveAll(users);
 
 	}
-	
-	
-	
-	
+
 }

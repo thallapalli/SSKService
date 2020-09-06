@@ -9,9 +9,11 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+import com.ssk.model.audit.Auditable;
+
 @Entity
 @Table(name = "role")
-public class Role {
+public class Role extends Auditable<String>{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
