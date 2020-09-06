@@ -1,39 +1,57 @@
 package com.ssk.model.entities;
 
+import java.util.Optional;
+
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.ssk.model.audit.Auditable;
+import com.sun.istack.NotNull;
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
 @Table(name = "incident")
-
+@JsonIgnoreProperties(value = { "incidentNumber" }, allowGetters = true)
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Incident extends Auditable<String> {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 
-	private Long ticketNumber;
+	private Long incidentNumber;
 	private String contact;
 	private String priority;
+	@NotNull
+	@Size(max = 100)
 	private String summary;
+
 	private String description;
 	private String status;
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.LAZY, optional = false)
+	@JoinColumn(name = "user_id", nullable = false)
+	@OnDelete(action = OnDeleteAction.CASCADE)
+	@JsonIgnore
 	private User user;
 
-	@Override
-	public String toString() {
-		return "Incident [ticketNumber=" + ticketNumber + ", contact=" + contact + ", priority=" + priority
-				+ ", summary=" + summary + ", description=" + description + ", status=" + status + ", createdBy="
-				+ createdBy + ", creationDate=" + creationDate + ", lastModifiedBy=" + lastModifiedBy
-				+ ", lastModifiedDate=" + lastModifiedDate + ", getClass()=" + getClass() + ", hashCode()=" + hashCode()
-				+ ", toString()=" + super.toString() + "]";
-	}
+	
 
 	@Override
 	public boolean equals(Object o) {
@@ -41,68 +59,12 @@ public class Incident extends Auditable<String> {
 			return true;
 		if (!(o instanceof Incident))
 			return false;
-		return ticketNumber != null && ticketNumber.equals(((Incident) o).getTicketNumber());
+		return incidentNumber != null && incidentNumber.equals(((Incident) o).getIncidentNumber());
 	}
 
 	@Override
 	public int hashCode() {
 		return 31;
-	}
-
-	public Long getTicketNumber() {
-		return ticketNumber;
-	}
-
-	public void setTicketNumber(Long ticketNumber) {
-		this.ticketNumber = ticketNumber;
-	}
-
-	public String getContact() {
-		return contact;
-	}
-
-	public void setContact(String contact) {
-		this.contact = contact;
-	}
-
-	public String getPriority() {
-		return priority;
-	}
-
-	public void setPriority(String priority) {
-		this.priority = priority;
-	}
-
-	public String getSummary() {
-		return summary;
-	}
-
-	public void setSummary(String summary) {
-		this.summary = summary;
-	}
-
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
-	public String getStatus() {
-		return status;
-	}
-
-	public void setStatus(String status) {
-		this.status = status;
-	}
-
-	public User getUser() {
-		return user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
 	}
 
 }
