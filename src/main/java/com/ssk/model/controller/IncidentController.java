@@ -5,6 +5,7 @@ import java.util.Optional;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,6 +23,7 @@ import com.ssk.model.service.UserServiceImpl;
 
 @RestController
 @RequestMapping("/incidents")
+@CrossOrigin(origins = "http://locahost:5000", maxAge = 3600)
 public class IncidentController {
 	@Autowired
 	IncidentService incidentService;
