@@ -5,8 +5,6 @@ import java.util.Optional;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,7 +21,7 @@ import com.ssk.model.service.IncidentService;
 import com.ssk.model.service.UserServiceImpl;
 
 @RestController
-@RequestMapping("/incident")
+@RequestMapping("/incidents")
 public class IncidentController {
 	@Autowired
 	IncidentService incidentService;
@@ -50,7 +48,7 @@ public class IncidentController {
 		incidentService.deleteById(id);
 	}
 
-	@GetMapping(value = "/all")
+	@GetMapping(value = "/")
 	public Iterable<Incident> findAll() {
 		return incidentService.findAll();
 	}
@@ -60,12 +58,12 @@ public class IncidentController {
 		return incidentService.findById(id);
 	}
 
-	@PostMapping(value = "/create")
+	@PostMapping(value = "/")
 	public Incident save(@RequestBody Incident incident) {
 		return incidentService.save(incident);
 	}
 
-	@PutMapping(value = "/update")
+	@PutMapping(value = "/")
 	public Incident update(@RequestBody Incident incident) {
 		return incidentService.save(incident);
 	}
@@ -76,7 +74,7 @@ public class IncidentController {
 
 	}
 
-	@PostMapping("/user/{userId}/incident")
+	@PostMapping("/user/{userId}/incidents")
 	public Incident createIncident(@PathVariable(value = "userId") Long userId, @Valid @RequestBody Incident incident)
 			throws ResourceNotFoundException {
 
@@ -84,7 +82,7 @@ public class IncidentController {
 
 			Optional<User> user = userServiceImpl.findById(userId);
 			User user1 = user.get();
-			incident.setUser(user1);
+			//incident.setUser(user1);
 			return incidentService.save(incident);
 
 		} else {
@@ -93,9 +91,9 @@ public class IncidentController {
 
 	}
 
-	@PutMapping("/user/{userId}/incident/{incidentNumber}")
+	@PutMapping("/user/{userId}/incidents/{incidentId}")
 	public Incident updateIncident(@PathVariable(value = "userId") Long userId,
-			@PathVariable(value = "incidentNumber") Long incidentNumber, @Valid @RequestBody Incident incident)
+			@PathVariable(value = "incidentNumber") Long incidentId, @Valid @RequestBody Incident incident)
 			throws ResourceNotFoundException {
 
 		if (!userServiceImpl.existsById(userId)) {
@@ -103,7 +101,7 @@ public class IncidentController {
 			throw new ResourceNotFoundException(userId + " Not found while updateing Incident");
 
 		} else {
-			Optional<Incident> findById = incidentService.findById(incidentNumber);
+			Optional<Incident> findById = incidentService.findById(incidentId);
 			
 			Incident incident2 = findById.get();
 			if(null!=incident2) {

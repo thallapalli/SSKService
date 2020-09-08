@@ -36,7 +36,7 @@ public class Incident extends Auditable<String> {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 
-	private Long incidentNumber;
+	private Long incidentId;
 	private String contact;
 	private String priority;
 	@NotNull
@@ -45,11 +45,7 @@ public class Incident extends Auditable<String> {
 
 	private String description;
 	private String status;
-	@ManyToOne(fetch = FetchType.LAZY, optional = false)
-	@JoinColumn(name = "user_id", nullable = false)
-	@OnDelete(action = OnDeleteAction.CASCADE)
-	@JsonIgnore
-	private User user;
+	
 
 	
 
@@ -59,7 +55,7 @@ public class Incident extends Auditable<String> {
 			return true;
 		if (!(o instanceof Incident))
 			return false;
-		return incidentNumber != null && incidentNumber.equals(((Incident) o).getIncidentNumber());
+		return incidentId != null && incidentId.equals(((Incident) o).getIncidentId());
 	}
 
 	@Override

@@ -17,14 +17,16 @@ insert
 insert 
     into
         incident
-        (incident_number, created_by, creation_date, last_modified_by, last_modified_date, contact, description, priority, status, summary, user_id) 
+        (incident_id, created_by, creation_date, last_modified_by, last_modified_date, contact, description, priority, status, summary) 
     values
-        (1, 'KK', '2020-09-06 02:10:39.197', 'k', '2020-09-06 02:10:39.197', 'k', 'k', 'k', 'k', 'k', '1');
+        (1, 'KK', '2020-09-06 02:10:39.197', 'k', '2020-09-06 02:10:39.197', 'k', 'k', 'k', 'k', 'k');
         
         insert 
     into
         incident
-        (incident_number, created_by, creation_date, last_modified_by, last_modified_date, contact, description, priority, status, summary, user_id) 
+        (incident_id, created_by, creation_date, last_modified_by, last_modified_date, contact, description, priority, status, summary
+        --, user_id
+        ) 
     values
-        (2, 'KK', '2020-09-06 02:10:39.197', 'k', '2020-09-06 02:10:39.197', 'k', 'k', 'k', 'k', 'k', '2');
+        (2, 'KK', '2020-09-06 02:10:39.197', 'k', '2020-09-06 02:10:39.197', 'k', 'k', 'k', 'k', 'k');
         
