@@ -19,7 +19,7 @@ insert
         incident
         (incident_id, created_by, creation_date, last_modified_by, last_modified_date, contact, description, priority, status, summary) 
     values
-        (1, 'KK', '2020-09-06 02:10:39.197', 'k', '2020-09-06 02:10:39.197', 'k', 'k', 'k', 'k', 'k');
+        (1,'KK', '2020-09-06 02:10:39.197', 'k', '2020-09-06 02:10:39.197', '9899', 'description', 'p1', 'Closed', 'summary');
         
         insert 
     into
@@ -28,5 +28,30 @@ insert
         --, user_id
         ) 
     values
-        (2, 'KK', '2020-09-06 02:10:39.197', 'k', '2020-09-06 02:10:39.197', 'k', 'k', 'k', 'k', 'k');
+        (2, 'KK', '2020-09-06 02:10:39.197', 'k', '2020-09-06 02:10:39.197', '9899', 'description', 'p1', 'Closed', 'summary');
+        
+         insert 
+    into
+        incident
+        (incident_id, created_by, creation_date, last_modified_by, last_modified_date, contact, description, priority, status, summary
+        --, user_id
+        ) 
+    values
+        (3, 'KK', '2020-09-06 02:10:39.197', 'k', '2020-09-06 02:10:39.197', '9899', 'description', 'p1', 'New', 'summary');
+         insert 
+    into
+        incident
+        (incident_id, created_by, creation_date, last_modified_by, last_modified_date, contact, description, priority, status, summary
+        --, user_id
+        ) 
+    values
+        (4, 'KK', '2020-09-06 02:10:39.197', 'k', '2020-09-06 02:10:39.197', '9899', 'description', 'p1', 'New', 'summary2');
+         insert 
+    into
+        incident
+        (incident_id, created_by, creation_date, last_modified_by, last_modified_date, contact, description, priority, status, summary
+        --, user_id
+        ) 
+    values
+        (5, 'KK', '2020-09-06 02:10:39.197', 'k', '2020-09-06 02:10:39.197', '9899', 'decsroption', 'p1', 'Open', 'summary');
         
