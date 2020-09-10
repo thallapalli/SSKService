@@ -55,3 +55,29 @@ insert
     values
         (5, 'KK', '2020-09-06 02:10:39.197', 'k', '2020-09-06 02:10:39.197', '9899', 'decsroption', 'p1', 'Open', 'summary');
         
+        
+        
+        
+        
+        
+        
+        insert 
+    into
+        note
+        (id, name
+        --, user_id
+        ) 
+    values
+        (5, 'KK');
+        
+        
+        
+         insert 
+    into
+        note
+        (id, name
+        --, user_id
+        ) 
+    values
+        (2, 'KK');
+        
